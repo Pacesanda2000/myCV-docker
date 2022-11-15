@@ -17,7 +17,7 @@ build_job:
   - echo "done" 
 
 # Info
-doploy_job:
+deploy_job:
     stage: DEPLOY
     script:
     - echo "Welcome from deploy_job."
