@@ -2,28 +2,22 @@
 
 # Stages
 stages: 
-  - welcome
-  - info
+  - BUILD 
+  - DEPLOY 
 
 # Jobs
-welcom_here:
-  stage: welcome  
+build_job:
+  stage: BUILD  
   script:
-  - echo "Welcome to Docker image build job......." 
-  - hostname
-  - date
-  - pwd 
+  - echo "Welcome from build_job." 
+  - ls -la
   - echo "done" 
 
 # Info
-info_script:
-    stage: info
+doploy_job:
+    stage: DEPLOY
     script:
-    - echo "Your hostname is:"
-    - hostname
-    - echo "Date is:"
+    - echo "Welcome from deploy_job."
     - date
-    - echo "Your currently path is:"
-    - pwd
-    - echo Done
+    - echo "done"
 
