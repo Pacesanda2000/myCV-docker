@@ -11,6 +11,8 @@ build_job:
   script:
   - echo "Welcome from build_job." 
   - ls -la
+  - vim /build/Dockerfile
+  - docker build -t dmajoros/testimages .
   - echo "done" 
 
 # Info
