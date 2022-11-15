@@ -1,5 +1,5 @@
-variables:
-  GIT_SSL_NO_VERIFY: "true"
+#variables:
+ # GIT_SSL_NO_VERIFY: "true"
 
 # This is test pipeline
 
