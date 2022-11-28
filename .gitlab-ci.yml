@@ -1,26 +1,20 @@
-#variables:
- # GIT_SSL_NO_VERIFY: "true"
+variables:
+    GIT_SSL_NO_VERIFY: "true"
+    GIT_STRATEGY: clone
 
-# This is test pipeline
+image: docker:19.03.12
+services:
+  - docker:19.03.12-dind
 
-# Stages
-stages: 
-  - BUILD 
-  - DEPLOY 
+stages:
+  - Build
 
-# Jobs
 build_job:
-  stage: BUILD  
+  stage: Build
   script:
-  - echo "Welcome from build_job." 
-  - ls -la
-  - echo "done" 
-
-# Info
-deploy_job:
-    stage: DEPLOY
-    script:
-    - echo "Welcome from deploy_job."
-    - date
-    - echo "done"
+    - echo "$DOCKERPWD" | docker login -u "$DOCKERUSER" --password-stdin
+    - docker build -t dmajoros/mycvimage:new -f Dockerfile .
+    - docker image ls
+    - docker push dmajoros/mycvimage:new
+    - docker logout
 
