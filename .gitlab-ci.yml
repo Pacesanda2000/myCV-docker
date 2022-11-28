@@ -18,3 +18,4 @@ build_job:
     - docker push dmajoros/mycvimage:new
     - docker logout
 
+#ahoj
