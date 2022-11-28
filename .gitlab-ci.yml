@@ -1,8 +1,6 @@
 variables:
     GIT_SSL_NO_VERIFY: "true"
-    GIT_STRATEGY: clone
-    GIT_CONFIG: git config --unset http.proxy
-    
+    GIT_STRATEGY: clone  
 
 image: docker:19.03.12
 services:
