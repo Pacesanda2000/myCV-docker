@@ -12,7 +12,7 @@ stages:
 build_job:
   stage: Build
   script:
-    - echo "$DOCKERPWD" | docker login -u "$DOCKERUSER" --password-stdin
+    - echo "$password" | docker login -u "$name" --password-stdin
     - docker build -t dmajoros/mycv:latest -f Dockerfile .
     - docker image ls
     - docker push dmajoros/mycv:latest
