@@ -18,4 +18,4 @@ build_job:
     - docker push dmajoros/mycv:latest
     - docker logout
 
-#ahoj
+
