@@ -21,7 +21,12 @@ build_job:
 
 run_job:
   stage: Run
+  tags: 
+    - dmajoros
   script:
     - docker login -u "$name" --password "$password"
-    - docker run --name testimage -p 8004:80 -dit dmajoros/mycv:latest
-    - docker logout
+    - docker pull dmajoros/mycv:latest
+    - docker run --name CVcko -p 8004:80 -d dmajoros/mycv:latest
+    - docker image ls
+    - echo "DEPLOY"
+
