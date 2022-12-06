@@ -27,6 +27,5 @@ run_job:
     - docker login -u "$name" --password "$password"
     - docker pull dmajoros/mycv:latest
     - docker run --name CVcko -p 8004:80 -d dmajoros/mycv:latest
-    - docker image ls
-    - echo "DEPLOY"
+    - docker logout
 
