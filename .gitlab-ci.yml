@@ -21,8 +21,6 @@ build_job:
 
 run_job:
   stage: Run
-  tags: 
-    - dmajoros
   script:
     - docker login -u "$name" --password "$password"
     - docker pull dmajoros/mycv:latest
