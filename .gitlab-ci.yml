@@ -2,9 +2,9 @@ variables:
     GIT_SSL_NO_VERIFY: "true"
     GIT_STRATEGY: clone  
 
-image: docker:19.03.12
+image: docker
 services:
-  - docker:19.03.12-dind
+  - docker:dind
 
 stages:
   - Build
@@ -12,8 +12,10 @@ stages:
 
 build_job:
   stage: Build
+  tags:
+    - dmajoros
   script:
-    - docker login -u "$name" --password "$password"
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker build -t dmajoros/mycv:latest -f Dockerfile .
     - docker image ls
     - docker push dmajoros/mycv:latest
@@ -26,7 +28,7 @@ run_job:
   script:
     - docker stop mycv
     - docker rm mycv
-    - docker login -u "$name" --password "$password"
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker pull dmajoros/mycv:latest
     - docker run --name CVcko -p 8004:80 -d dmajoros/mycv:latest
     - docker logout
